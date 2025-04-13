@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>AI & Politeness Planner</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body { font-family: Arial, sans-serif; padding: 2rem; background: #f4f4f4; }
+    h1 { color: #3f51b5; text-align: center; }
+    section { background: white; padding: 1.5rem; margin-top: 1rem; border-radius: 8px; }
+    textarea { width: 100%; height: 100px; margin-top: 0.5rem; }
+    button { margin-top: 1rem; padding: 0.5rem 1rem; background: #3f51b5; color: white; border: none; border-radius: 4px; }
+    .nav-buttons { display: flex; justify-content: space-between; margin-top: 1rem; }
+    .hidden { display: none; }
+  </style>
+</head>
+<body>
+  <h1>🌐 AI & Politeness: Interactive Research Planner</h1>
+  <p style="text-align:center;">Design your research project at your own pace</p>
+
+  <section id="step1">
+    <h2>Step 1: Choose Your Concepts</h2>
+    <p>Start by selecting one or two key concepts from politeness theory (e.g., Brown & Levinson, Leech, or Spencer-Oatey).</p>
+    <textarea placeholder="E.g., Positive politeness, face-threatening acts..."></textarea>
+    <div class="nav-buttons">
+      <button onclick="openAI()">🔍 Ask AI</button>
+      <button onclick="nextStep(1)">Next</button>
+    </div>
+  </section>
+
+  <section id="step2" class="hidden">
+    <h2>Step 2: Draft Your AI Prompts</h2>
+    <p>Write 3–5 prompts that you will ask the AI to test how well it can explain and use politeness strategies.</p>
+    <textarea placeholder="E.g., Explain Brown and Levinson's theory as if I'm a beginner..."></textarea>
+    <div class="nav-buttons">
+      <button onclick="prevStep(2)">Back</button>
+      <button onclick="openAI()">🔍 Ask AI</button>
+      <button onclick="nextStep(2)">Next</button>
+    </div>
+  </section>
+
+  <section id="step3" class="hidden">
+    <h2>Step 3: Design Your Rubric</h2>
+    <p>Write down how you will evaluate AI responses. Consider accuracy, clarity, depth, and example quality.</p>
+    <textarea placeholder="E.g., 1 = unclear, 2 = partial, 3 = clear and accurate..."></textarea>
+    <div class="nav-buttons">
+      <button onclick="prevStep(3)">Back</button>
+      <button onclick="openAI()">🔍 Ask AI</button>
+      <button onclick="nextStep(3)">Next</button>
+    </div>
+  </section>
+
+  <section id="step4" class="hidden">
+    <h2>Step 4: Reflect on Your Findings</h2>
+    <p>Summarize what the AI did well, where it struggled, and what this means for your research on politeness.</p>
+    <textarea placeholder="E.g., The AI used basic definitions but lacked contextual nuance..."></textarea>
+    <div class="nav-buttons">
+      <button onclick="prevStep(4)">Back</button>
+      <button onclick="openAI()">🔍 Ask AI</button>
+    </div>
+  </section>
+
+  <script>
+    function nextStep(current) {
+      document.getElementById('step' + current).classList.add('hidden');
+      document.getElementById('step' + (current + 1)).classList.remove('hidden');
+    }
+    function prevStep(current) {
+      document.getElementById('step' + current).classList.add('hidden');
+      document.getElementById('step' + (current - 1)).classList.remove('hidden');
+    }
+    function openAI() {
+      window.open("https://www.perplexity.ai", "_blank");
+    }
+  </script>
+</body>
+</html>
