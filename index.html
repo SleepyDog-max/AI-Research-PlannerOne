@@ -1,77 +1,197 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>AI & Politeness Planner</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <title>🌐 AI & Politeness: Interactive Research Planner</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <style>
-    body { font-family: Arial, sans-serif; padding: 2rem; background: #f4f4f4; }
-    h1 { color: #3f51b5; text-align: center; }
-    section { background: white; padding: 1.5rem; margin-top: 1rem; border-radius: 8px; }
-    textarea { width: 100%; height: 100px; margin-top: 0.5rem; }
-    button { margin-top: 1rem; padding: 0.5rem 1rem; background: #3f51b5; color: white; border: none; border-radius: 4px; }
-    .nav-buttons { display: flex; justify-content: space-between; margin-top: 1rem; }
-    .hidden { display: none; }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f0f4f8;
+      margin: 0;
+      padding: 2rem;
+      color: #333;
+    }
+    h1 {
+      text-align: center;
+      color: #3f51b5;
+      font-size: 2rem;
+    }
+    section {
+      background: white;
+      padding: 1.5rem;
+      border-radius: 12px;
+      max-width: 800px;
+      margin: 2rem auto;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    }
+    h2 {
+      color: #2c3e50;
+    }
+    textarea {
+      width: 100%;
+      height: 120px;
+      padding: 0.75rem;
+      margin-top: 1rem;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      font-size: 1rem;
+    }
+    button {
+      padding: 0.6rem 1.2rem;
+      border: none;
+      border-radius: 5px;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+    .nav-buttons {
+      margin-top: 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .hidden {
+      display: none;
+    }
+    .btn-primary {
+      background-color: #3f51b5;
+      color: white;
+    }
+    .btn-secondary {
+      background-color: #aaa;
+      color: white;
+    }
+    .btn-success {
+      background-color: #4caf50;
+      color: white;
+    }
   </style>
 </head>
 <body>
-  <h1>🌐 AI & Politeness: Interactive Research Planner</h1>
-  <p style="text-align:center;">Design your research project at your own pace</p>
 
-  <section id="step1">
-    <h2>Step 1: Choose Your Concepts</h2>
-    <p>Start by selecting one or two key concepts from politeness theory (e.g., Brown & Levinson, Leech, or Spencer-Oatey).</p>
-    <textarea placeholder="E.g., Positive politeness, face-threatening acts..."></textarea>
-    <div class="nav-buttons">
-      <button onclick="openAI()">🔍 Ask AI</button>
-      <button onclick="nextStep(1)">Next</button>
-    </div>
-  </section>
+<h1>🌐 AI & Politeness: Interactive Research Planner</h1>
 
-  <section id="step2" class="hidden">
-    <h2>Step 2: Draft Your AI Prompts</h2>
-    <p>Write 3–5 prompts that you will ask the AI to test how well it can explain and use politeness strategies.</p>
-    <textarea placeholder="E.g., Explain Brown and Levinson's theory as if I'm a beginner..."></textarea>
-    <div class="nav-buttons">
-      <button onclick="prevStep(2)">Back</button>
-      <button onclick="openAI()">🔍 Ask AI</button>
-      <button onclick="nextStep(2)">Next</button>
-    </div>
-  </section>
+<section id="step1">
+  <h2>Step 1: Choose Your Concepts</h2>
+  <p>This project focuses on exploring how well AI can explain and apply theories of linguistic politeness. To begin, select one or two theoretical concepts that you want to focus on in your study. These will form the foundation of your prompts and analysis.</p>
+  <p><strong>Recommended Theories:</strong></p>
+  <ul>
+    <li><strong>Brown & Levinson (1987):</strong> positive and negative politeness, face-threatening acts (FTAs)</li>
+    <li><strong>Leech (1983):</strong> politeness maxims (tact, generosity, approbation, modesty, agreement, sympathy)</li>
+    <li><strong>Spencer-Oatey (2008):</strong> rapport management framework</li>
+  </ul>
+  <p><strong>What to write below:</strong> Briefly describe your selected theory and why you find it interesting or relevant for AI evaluation.</p>
+  <textarea id="input1"></textarea>
+  <div class="nav-buttons">
+    <button class="btn-secondary" onclick="clearStep(1)">🧹 Clear</button>
+    <button class="btn-primary" onclick="nextStep(1)">Next</button>
+  </div>
+</section>
 
-  <section id="step3" class="hidden">
-    <h2>Step 3: Design Your Rubric</h2>
-    <p>Write down how you will evaluate AI responses. Consider accuracy, clarity, depth, and example quality.</p>
-    <textarea placeholder="E.g., 1 = unclear, 2 = partial, 3 = clear and accurate..."></textarea>
-    <div class="nav-buttons">
-      <button onclick="prevStep(3)">Back</button>
-      <button onclick="openAI()">🔍 Ask AI</button>
-      <button onclick="nextStep(3)">Next</button>
-    </div>
-  </section>
+<section id="step2" class="hidden">
+  <h2>Step 2: Draft Your AI Prompts</h2>
+  <p><strong>Goal:</strong> Draft AI prompts that help you explore how well the AI explains or demonstrates politeness concepts.</p>
+  <p>Prompts are questions or tasks you give the AI. These should be carefully designed to test its ability to explain theory clearly and apply it appropriately in realistic contexts.</p>
+  <p><strong>Prompt Types to Consider:</strong></p>
+  <ul>
+    <li><strong>Definition prompts:</strong> Ask the AI to define or explain concepts simply or with technical detail</li>
+    <li><strong>Example generation:</strong> Ask for sample sentences or dialogues demonstrating a specific strategy</li>
+    <li><strong>Scenario testing:</strong> Ask the AI to simulate a polite exchange in a specific situation</li>
+    <li><strong>Comparative tasks:</strong> Ask the AI to compare polite vs. impolite versions of the same sentence</li>
+  </ul>
+  <p><strong>Example Prompts:</strong></p>
+  <ul>
+    <li>“Explain the difference between positive and negative politeness.”</li>
+    <li>“Give three examples of how a person might show politeness when asking for help.”</li>
+    <li>“Rewrite the sentence ‘Give me that file’ in a polite tone appropriate for a workplace.”</li>
+    <li>“Create a dialogue where a student politely refuses a teacher’s request.”</li>
+  </ul>
+  <p><strong>What to write:</strong> List at least 3–5 prompts you will use. Describe what each is intended to test (e.g., knowledge, application, nuance).</p>
+  <textarea id="input2"></textarea>
+  <div class="nav-buttons">
+    <button class="btn-primary" onclick="prevStep(2)">Back</button>
+    <button class="btn-secondary" onclick="clearStep(2)">🧹 Clear</button>
+    <button class="btn-primary" onclick="nextStep(2)">Next</button>
+  </div>
+</section>
 
-  <section id="step4" class="hidden">
-    <h2>Step 4: Reflect on Your Findings</h2>
-    <p>Summarize what the AI did well, where it struggled, and what this means for your research on politeness.</p>
-    <textarea placeholder="E.g., The AI used basic definitions but lacked contextual nuance..."></textarea>
-    <div class="nav-buttons">
-      <button onclick="prevStep(4)">Back</button>
-      <button onclick="openAI()">🔍 Ask AI</button>
-    </div>
-  </section>
+<section id="step3" class="hidden">
+  <h2>Step 3: Design Your Rubric</h2>
+  <p><strong>Goal:</strong> Design a robust and thoughtful rubric to evaluate the quality of the AI's output.</p>
+  <p>A rubric helps you assess AI responses fairly and consistently. You might use a scoring system or written comments for each dimension.</p>
+  <p><strong>Common Rubric Categories:</strong></p>
+  <ul>
+    <li><strong>Accuracy:</strong> Are key concepts explained or used correctly according to the theory?</li>
+    <li><strong>Clarity:</strong> Is the response understandable to the target audience (e.g., beginner, expert)?</li>
+    <li><strong>Contextual Fit:</strong> Are responses appropriate for the situation and the relationship between speakers?</li>
+    <li><strong>Depth and Insight:</strong> Does the AI demonstrate deeper understanding, or just surface-level answers?</li>
+    <li><strong>Pragmatic Nuance:</strong> Does it reflect social dynamics, like power or distance?</li>
+    <li><strong>Terminology Use:</strong> Are theoretical terms defined and used appropriately?</li>
+  </ul>
+  <p><strong>Scoring Tip:</strong> You can use a 1–5 scale or descriptive categories (e.g., Unsatisfactory / Satisfactory / Strong).</p>
+  <p><strong>What to write:</strong> Define each rubric item clearly.</p>
+  <textarea id="input3"></textarea>
+  <div class="nav-buttons">
+    <button class="btn-primary" onclick="prevStep(3)">Back</button>
+    <button class="btn-secondary" onclick="clearStep(3)">🧹 Clear</button>
+    <button class="btn-primary" onclick="nextStep(3)">Next</button>
+  </div>
+</section>
 
-  <script>
-    function nextStep(current) {
-      document.getElementById('step' + current).classList.add('hidden');
-      document.getElementById('step' + (current + 1)).classList.remove('hidden');
+<section id="step4" class="hidden">
+  <h2>Step 4: Reflect on Your Findings</h2>
+  <p><strong>Goal:</strong> Reflect critically on your findings and evaluate how effective the AI was in applying politeness theory.</p>
+  <p>This is your chance to analyze strengths and weaknesses in the AI’s performance and what this suggests about its pragmatic competence.</p>
+  <p><strong>Reflection Questions:</strong></p>
+  <ul>
+    <li>Did the AI correctly identify and use politeness strategies (e.g., hedging, honorifics, indirectness)?</li>
+    <li>Did its responses reflect the context (e.g., cultural norms, status differences, relationship closeness)?</li>
+    <li>Were any theories misrepresented, oversimplified, or ignored?</li>
+    <li>How consistent was the quality of output across different prompt types?</li>
+    <li>Could a human learner benefit from the explanations/examples given by the AI?</li>
+  </ul>
+  <p><strong>What to write:</strong> Summarize your key insights. Mention anything surprising or insightful.</p>
+  <textarea id="input4"></textarea>
+  <div class="nav-buttons">
+    <button class="btn-primary" onclick="prevStep(4)">Back</button>
+    <button class="btn-secondary" onclick="clearStep(4)">🧹 Clear</button>
+    <button class="btn-success" onclick="showSummary()">📋 View Summary</button>
+  </div>
+</section>
+
+<section id="summary" class="hidden">
+  <h2>📋 Summary of Your Research Planner</h2>
+  <pre id="summaryContent" style="background: #eee; padding: 1rem; border-radius: 6px;"></pre>
+  <button class="btn-primary" onclick="location.reload()">🔄 Start Over</button>
+</section>
+
+<script>
+  function nextStep(n) {
+    document.getElementById("step" + n).classList.add("hidden");
+    document.getElementById("step" + (n + 1)).classList.remove("hidden");
+  }
+  function prevStep(n) {
+    document.getElementById("step" + n).classList.add("hidden");
+    document.getElementById("step" + (n - 1)).classList.remove("hidden");
+  }
+  function clearStep(n) {
+    document.getElementById("input" + n).value = "";
+  }
+  function showSummary() {
+    for (let i = 1; i <= 4; i++) {
+      document.getElementById("step" + i).classList.add("hidden");
     }
-    function prevStep(current) {
-      document.getElementById('step' + current).classList.add('hidden');
-      document.getElementById('step' + (current - 1)).classList.remove('hidden');
+    document.getElementById("summary").classList.remove("hidden");
+    let text = "";
+    for (let i = 1; i <= 4; i++) {
+      const input = document.getElementById("input" + i).value.trim();
+      text += "Step " + i + ":\n" + (input || "[No input]") + "\n\n";
     }
-    function openAI() {
-      window.open("https://www.perplexity.ai", "_blank");
-    }
-  </script>
+    document.getElementById("summaryContent").textContent = text;
+  }
+</script>
+
 </body>
 </html>
